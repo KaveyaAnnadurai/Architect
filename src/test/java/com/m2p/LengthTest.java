@@ -6,21 +6,23 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.not;
-import static com.m2p.Centimeter.createMeter;
-import static com.m2p.Centimeter.createKiloMeter;
-public class CentimeterTest {
+import static com.m2p.Length.meter;
+import static com.m2p.Length.kilometer;
+import static com.m2p.Length.centimeter;
+public class LengthTest {
 
     @Test
     void toCheckIfOneCmIsEqualToAnotherOneCm() {
-        Centimeter oneCm = new Centimeter(1);
-        Centimeter anotherOneCm = new Centimeter(1);
+        Length oneCm = centimeter(1);
+        Length anotherOneCm = centimeter(1);
 
         assertThat(oneCm, is(equalTo(anotherOneCm)));
     }
     @Test
     void toCheckInequalityIfTwoCmIsEqualToAnotherOneCm() {
-        Centimeter oneCm = new Centimeter(1);
-        Centimeter twoCm = new Centimeter(2);
+
+        Length oneCm = centimeter(1);
+        Length twoCm = centimeter(2);
 
         assertThat(oneCm, is(not(equalTo(twoCm))));
     }
@@ -28,24 +30,24 @@ public class CentimeterTest {
     @Test
     void toCheckIfOneMeterIsEqualToHundredCm(){
 
-        Centimeter hundredCm = new Centimeter(100);
-        Centimeter oneMeter = createMeter(1);
+        Length hundredCm = centimeter(100);
+        Length oneMeter = meter(1);
 
-        assertThat(hundredCm, is(equalTo(oneMeter)));
+        assertThat(oneMeter, is(equalTo(hundredCm)));
     }
     @Test
     void toCheckInequalityIfTwoMeterIsEqualToHundredCm(){
 
-        Centimeter hundredCm = new Centimeter(100);
-        Centimeter oneMeter = createMeter(2);
+        Length hundredCm = centimeter(100);
+        Length oneMeter = meter(2);
 
         assertThat(hundredCm, is(not(equalTo(oneMeter))));
     }
 
     @Test
     void toCheckInequalityIfHundredCmIsEqualToPointOneKm(){
-        Centimeter hundredCm = new Centimeter(100);
-        Centimeter oneMeter = createKiloMeter(0.1);
+        Length hundredCm = centimeter(100);
+        Length oneMeter = kilometer(0.1);
 
         assertThat(hundredCm, is(not(equalTo(oneMeter))));
 
@@ -53,12 +55,13 @@ public class CentimeterTest {
 
     @Test
     void toCheckEqualityIfOneLakhCmIsEqualToPointOneKm(){
-        Centimeter oneLakhCm = new Centimeter(100000);
-        Centimeter oneMeter = createKiloMeter(0.1);
+        Length oneLakhCm = centimeter(100000);
+        Length oneMeter = kilometer(0.1);
 
         assertThat(oneLakhCm, is(not(equalTo(oneMeter))));
 
     }
+
 
 }
 
