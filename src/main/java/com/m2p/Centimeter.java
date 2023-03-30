@@ -6,6 +6,12 @@ public class Centimeter {
     public Centimeter(double magnitude) {
         this.magnitude = magnitude;
     }
+    public static Centimeter createMeter(double meterMagnitude){
+        return new Centimeter(meterMagnitude*100);
+    }
+    public static Centimeter createKiloMeter(double kmMagnitude){
+        return new Centimeter(kmMagnitude*10000);
+    }
 
     @Override
     public boolean equals(Object object) {
