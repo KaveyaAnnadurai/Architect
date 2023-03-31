@@ -9,6 +9,8 @@ import static org.hamcrest.CoreMatchers.not;
 import static com.m2p.Length.meter;
 import static com.m2p.Length.kilometer;
 import static com.m2p.Length.centimeter;
+
+//Req 3: As an architect, I want to be able to know that 1 m + 100 cm = 2 m, or 200 cm + 1 km = 100200 cm
 public class LengthTest {
 
     @Test
@@ -62,6 +64,42 @@ public class LengthTest {
 
     }
 
+    @Test
+    void toCheckIfSumOfOneMeterAndHundredCmIsTwoMeter(){
+        Length oneMeter = meter(1);
+        Length hundredCentimeter = centimeter(100);
+
+        Length twoMeter = meter(2);
+        assertThat(oneMeter.plus(hundredCentimeter), is(equalTo(twoMeter)));
+
+    }
+    @Test
+    void toCheckInequalityIfSumOfOneMeterAndOneCmIsTwoMeter(){
+        Length oneMeter = meter(1);
+        Length oneCentimeter = centimeter(1);
+
+        Length twoMeter = meter(2);
+        assertThat(oneMeter.plus(oneCentimeter), is(not(equalTo(twoMeter))));
+
+    }
+    @Test
+    void toCheckIfSumOfTwoHundredCmAndOneKmIsOneLakhTwoHundredCm(){
+        Length twoHundredCm = centimeter(200);
+        Length oneKm = kilometer(1);
+
+        Length oneLakhHundredCm = centimeter(100200);
+
+        assertThat(twoHundredCm.plus(oneKm), is(equalTo(oneLakhHundredCm)));
+    }
+    @Test
+    void toCheckInequalityIfSumOfTwoCmAndOneKmIsTwoThousandCm(){
+        Length twoCm = centimeter(2);
+        Length oneKm = kilometer(1);
+
+        Length twoThousandCm = centimeter(2000);
+
+        assertThat(twoCm.plus(oneKm), is(not(equalTo(twoThousandCm))));
+    }
 
 }
 
